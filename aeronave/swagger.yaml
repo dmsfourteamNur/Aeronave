@@ -108,6 +108,17 @@ paths:
         name: key
         required: true
       tags: [/aeronave]
+  /aeronave/registro:
+    post:
+      summary: /aeronave register
+      requestBody:
+        content:
+          application/json:
+            schema: {type: object}
+      operationId: /aeronave_register
+      responses:
+        '200': {description: Response 200}
+      tags: [/aeronave]
   /aeronave/AddAsiento/{key}:
     put:
       summary: /aeronave addAsiento
@@ -123,17 +134,6 @@ paths:
         in: path
         name: key
         required: true
-      tags: [/aeronave]
-  /aeronave/registro:
-    post:
-      summary: /aeronave register
-      requestBody:
-        content:
-          application/json:
-            schema: {type: object}
-      operationId: /aeronave_register
-      responses:
-        '200': {description: Response 200}
       tags: [/aeronave]
   /marca/registro:
     post:

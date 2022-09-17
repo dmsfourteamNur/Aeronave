@@ -15,8 +15,6 @@
 
   <packaging>pom</packaging>
   <modules>
-    <module>Fourteam</module>
-    <module>SharedKernel</module>
     <module>Domain</module>
     <module>Application</module>
     <module>Infraestructure</module>

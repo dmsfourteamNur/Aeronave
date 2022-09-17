@@ -6,9 +6,9 @@ import Model.Aeronaves.Aeronave;
 import Model.Aeronaves.Asiento;
 import Repositories.IAeronaveRepository;
 import Repositories.IUnitOfWork;
-import fourteam.http.Exception.HttpException;
-import fourteam.http.HttpStatus;
-import fourteam.mediator.RequestHandler;
+import Fourteam.http.Exception.HttpException;
+import Fourteam.http.HttpStatus;
+import Fourteam.mediator.RequestHandler;
 import java.util.UUID;
 
 public class AddAsientoAeronaveHandler implements RequestHandler<AddAsientoAeronaveCommand, UUID> {
@@ -43,8 +43,5 @@ public class AddAsientoAeronaveHandler implements RequestHandler<AddAsientoAeron
     _aeronaveRepository.Update(aeronave);
     _unitOfWork.commit();
     return asiento.key;
-    // aeronave.matricula = request.aeronave.matricula;
-
-    // return aeronave.key;
   }
 }

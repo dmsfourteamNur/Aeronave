@@ -2,8 +2,8 @@ package UseCases.Consumers;
 
 import core.IRepository;
 import core.IntegrationEvent;
-import fourteam.massTransit.IConsumer;
-import fourteam.mediator.IMediator;
+import Fourteam.massTransit.IConsumer;
+import Fourteam.mediator.IMediator;
 
 public class TripulacionCreadoConsumer extends IConsumer<IntegrationEvents.TripulacionCreado> {
 

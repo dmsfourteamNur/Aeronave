@@ -1,7 +1,7 @@
 package UseCases.Command.Aeronaves.Eliminar;
 
 import Dto.AeronaveDto;
-import fourteam.mediator.Request;
+import Fourteam.mediator.Request;
 import java.util.UUID;
 
 public class EliminarAeronaveCommand implements Request<AeronaveDto> {

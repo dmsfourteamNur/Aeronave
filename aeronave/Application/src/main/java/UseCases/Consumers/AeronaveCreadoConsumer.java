@@ -1,7 +1,7 @@
 package UseCases.Consumers;
 
-import fourteam.massTransit.IConsumer;
-import fourteam.mediator.IMediator;
+import Fourteam.massTransit.IConsumer;
+import Fourteam.mediator.IMediator;
 
 public class AeronaveCreadoConsumer extends IConsumer<IntegrationEvents.AeronaveCreado> {
 

@@ -2,8 +2,8 @@ package UseCases.Command.Asientos.UpdateAsientosWhenAeronaveCreado;
 
 import Event.AeronaveCreado;
 import Repositories.IAsientoRepository;
-import fourteam.mediator.Notification;
-import fourteam.mediator.NotificationHandler;
+import Fourteam.mediator.Notification;
+import Fourteam.mediator.NotificationHandler;
 
 public class UpdateAsientosWhenAeronaveCreadoHandler
   implements NotificationHandler<AeronaveCreado> {

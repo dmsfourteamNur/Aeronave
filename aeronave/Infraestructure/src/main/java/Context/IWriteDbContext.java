@@ -3,9 +3,9 @@ package Context;
 import Model.Aeronaves.Aeronave;
 import Model.Aeronaves.Asiento;
 import Model.Marcas.Marca;
-import fourteam.db.DbContext;
-import fourteam.db.DbSet;
-import fourteam.db.Exception.DataBaseException;
+import Fourteam.db.DbContext;
+import Fourteam.db.DbSet;
+import Fourteam.db.Exception.DataBaseException;
 
 public abstract class IWriteDbContext extends DbContext {
 

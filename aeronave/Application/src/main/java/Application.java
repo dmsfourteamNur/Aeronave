@@ -11,13 +11,14 @@ import UseCases.Command.Marcas.AddModelo.AddModeloMarcaHandler;
 import UseCases.Command.Marcas.Crear.CrearMarcaHandler;
 import UseCases.Command.Marcas.Editar.EditarMarcaHandler;
 import UseCases.Command.Marcas.Eliminar.EliminarMarcaHandler;
+import UseCases.DomainEventHandler.Aeronave.PublishIntegrationEventWhenAeronaveChangeHandler;
 import UseCases.DomainEventHandler.Aeronave.PublishIntegrationEventWhenAeronaveCreadoHandler;
 import UseCases.Queries.Aeronaves.GetAll.GetAllAeronaveHandler;
 import UseCases.Queries.Aeronaves.GetByKey.GetAeronaveByKeyHandler;
 import UseCases.Queries.Marcas.GetAll.GetAllMarcaHandler;
 import UseCases.Queries.Marcas.GetByKey.GetMarcaByKeyHandler;
-import fourteam.extensions.IServiceCollection;
-import fourteam.mediator.IMediator;
+import Fourteam.extensions.IServiceCollection;
+import Fourteam.mediator.IMediator;
 
 public class Application {
 
@@ -40,6 +41,7 @@ public class Application {
     IMediator.registerHandler(AddModeloMarcaHandler.class);
 
     IMediator.registerHandler(UpdateAsientosWhenAeronaveCreadoHandler.class);
+    IMediator.registerHandler(PublishIntegrationEventWhenAeronaveChangeHandler.class);
     IMediator.registerHandler(PublishIntegrationEventWhenAeronaveCreadoHandler.class);
     IServiceCollection.AddTransient(IAeronaveFactory.class, AeronaveFactory.class);
     IServiceCollection.AddTransient(IMarcaFactory.class, MarcaFactory.class);

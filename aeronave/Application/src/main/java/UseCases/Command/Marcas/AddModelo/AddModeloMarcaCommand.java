@@ -3,7 +3,7 @@ package UseCases.Command.Marcas.AddModelo;
 import Dto.AeronaveDto;
 import Dto.AsientoDto;
 import Dto.ModeloDto;
-import fourteam.mediator.Request;
+import Fourteam.mediator.Request;
 import java.util.UUID;
 
 public class AddModeloMarcaCommand implements Request<ModeloDto> {

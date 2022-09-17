@@ -3,7 +3,7 @@ package Repository;
 import Context.IWriteDbContext;
 import Model.Marcas.Marca;
 import Repositories.IMarcaRepository;
-import fourteam.db.DbSet;
+import Fourteam.db.DbSet;
 import java.util.List;
 import java.util.UUID;
 

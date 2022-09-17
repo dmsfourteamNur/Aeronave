@@ -2,7 +2,7 @@ package UseCases.Command.Aeronaves.AddAsiento;
 
 import Dto.AeronaveDto;
 import Dto.AsientoDto;
-import fourteam.mediator.Request;
+import Fourteam.mediator.Request;
 import java.util.UUID;
 
 public class AddAsientoAeronaveCommand implements Request<AsientoDto> {

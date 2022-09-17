@@ -1,7 +1,7 @@
 package UseCases.Command.Marcas.Eliminar;
 
 import Dto.MarcaDto;
-import fourteam.mediator.Request;
+import Fourteam.mediator.Request;
 import java.util.UUID;
 
 public class EliminarMarcaCommand implements Request<UUID> {

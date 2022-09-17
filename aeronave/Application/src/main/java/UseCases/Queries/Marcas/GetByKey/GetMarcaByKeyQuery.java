@@ -2,7 +2,7 @@ package UseCases.Queries.Marcas.GetByKey;
 
 import Dto.AeronaveDto;
 import Dto.MarcaDto;
-import fourteam.mediator.Request;
+import Fourteam.mediator.Request;
 import java.util.UUID;
 
 public class GetMarcaByKeyQuery implements Request<MarcaDto> {

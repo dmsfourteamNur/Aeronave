@@ -29,7 +29,7 @@ cat > ./target/jacoco/index.html << EOF
     <title>Document</title>
 </head>
 <body>
-    <h1>FourTeam</h1>
+    <h1>Fourteam</h1>
     <h3>Jacoco Coverage</h1>
     ${items}
 </body>

@@ -1,5 +1,6 @@
 package Model.Aeronaves;
 
+import Event.AeronaveChange;
 import Event.AeronaveCreado;
 import Model.Aeronaves.ValueObjects.MatriculaAeronave;
 import Model.Aeronaves.ValueObjects.ModeloAeronave;
@@ -15,7 +16,8 @@ public class Aeronave extends AggregateRoot<UUID> {
   public String keyModelo;
   public List<Asiento> asientos;
 
-  public Aeronave() {}
+  public Aeronave() {
+  }
 
   public Aeronave(String matricula, String keyModelo) {
     key = UUID.randomUUID();
@@ -33,14 +35,19 @@ public class Aeronave extends AggregateRoot<UUID> {
     addDomainEvent(new AeronaveCreado(key, matricula));
   }
 
+  public void eventChange() {
+    addDomainEvent(new AeronaveChange(key));
+  }
+
   public void agregarAsiento(Asiento asiento) {
     asientos
-      .parallelStream()
-      .filter(p -> p.getKey() == asiento.getKey())
-      .findFirst()
-      .ifPresent(p -> {
-        throw new RuntimeException("El asiento ya existe");
-      });
+        .parallelStream()
+        .filter(p -> p.getKey() == asiento.getKey())
+        .findFirst()
+        .ifPresent(p -> {
+          throw new RuntimeException("El asiento ya existe");
+        });
     asientos.add(asiento);
+    eventChange();
   }
 }

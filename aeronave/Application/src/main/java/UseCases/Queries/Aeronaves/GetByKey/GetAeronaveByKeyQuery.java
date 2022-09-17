@@ -1,7 +1,7 @@
 package UseCases.Queries.Aeronaves.GetByKey;
 
 import Dto.AeronaveDto;
-import fourteam.mediator.Request;
+import Fourteam.mediator.Request;
 import java.util.UUID;
 
 public class GetAeronaveByKeyQuery implements Request<AeronaveDto> {

@@ -14,6 +14,7 @@ services:
   server:
     image: rickypazd/aeronave-java
     build: ./aeronave
+    restart: always
     network_mode: "service:database"
   web:
     image: nginx:latest

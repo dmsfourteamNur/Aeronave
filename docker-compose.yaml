@@ -11,11 +11,11 @@ services:
       - 27017:27017
     volumes:
       - ./mongoDB/:/data/db
-  server:
-    image: rickypazd/aeronave-java
-    build: ./aeronave
-    restart: always
-    network_mode: "service:database"
+  # server:
+  #   image: rickypazd/aeronave-java
+  #   build: ./aeronave
+  #   restart: always
+  #   network_mode: "service:database"
   web:
     image: nginx:latest
     network_mode: "service:database"

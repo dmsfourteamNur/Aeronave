@@ -18,7 +18,7 @@ public class PublishIntegrationEventWhenAeronaveCreadoHandler
   }
 
   @Override
-  public void handle(Notification notification) {
+  public void handle(ConfirmedDomainEvent<AeronaveCreado> notification) {
     ConfirmedDomainEvent event = (ConfirmedDomainEvent) notification;
     AeronaveCreado aeronave = (AeronaveCreado) event.DomainEvent;
     IntegrationEvents.AeronaveCreado evento = new IntegrationEvents.AeronaveCreado();

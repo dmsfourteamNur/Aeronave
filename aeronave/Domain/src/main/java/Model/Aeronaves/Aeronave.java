@@ -39,13 +39,13 @@ public class Aeronave extends AggregateRoot<UUID> {
     addDomainEvent(new AeronaveChange(key));
   }
 
-  public void agregarAsiento(Asiento asiento) {
+  public void agregarAsiento(Asiento asiento) throws Exception {
     asientos
         .parallelStream()
-        .filter(p -> p.getKey() == asiento.getKey())
+        .filter(p -> p.numero == asiento.numero)
         .findFirst()
         .ifPresent(p -> {
-          throw new RuntimeException("El asiento ya existe");
+          throw new RuntimeException("El numero asiento ya existe");
         });
     asientos.add(asiento);
     eventChange();

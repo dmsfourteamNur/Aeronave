@@ -41,8 +41,9 @@ public class Application {
     IMediator.registerHandler(AddModeloMarcaHandler.class);
 
     IMediator.registerHandler(UpdateAsientosWhenAeronaveCreadoHandler.class);
-    IMediator.registerHandler(PublishIntegrationEventWhenAeronaveChangeHandler.class);
     IMediator.registerHandler(PublishIntegrationEventWhenAeronaveCreadoHandler.class);
+    IMediator.registerHandler(PublishIntegrationEventWhenAeronaveChangeHandler.class);
+
     IServiceCollection.AddTransient(IAeronaveFactory.class, AeronaveFactory.class);
     IServiceCollection.AddTransient(IMarcaFactory.class, MarcaFactory.class);
 

@@ -25,9 +25,8 @@ public class PublishIntegrationEventWhenAeronaveChangeHandler
   }
 
   @Override
-  public void handle(Notification notification) {
-    ConfirmedDomainEvent event = (ConfirmedDomainEvent) notification;
-    AeronaveChange aeronaveChage = (AeronaveChange) event.DomainEvent;
+  public void handle(ConfirmedDomainEvent<AeronaveChange> notification) {
+    AeronaveChange aeronaveChage = (AeronaveChange) notification.DomainEvent;
     try {
       Aeronave aeronave = _aeronaveRepository.FindByKey(aeronaveChage.keyAeronave);
       IntegrationEvents.AeronaveChange evento = new IntegrationEvents.AeronaveChange();
@@ -40,7 +39,7 @@ public class PublishIntegrationEventWhenAeronaveChangeHandler
         IntegrationEvents.dto.AsientoDto asientoDto = new IntegrationEvents.dto.AsientoDto();
         asientoDto.key = asiento.key;
         asientoDto.keyAeronave = asiento.keyAeronave;
-        asientoDto.numero = asiento.numero+"";
+        asientoDto.numero = asiento.numero;
         asientoDto.clase = asiento.clase;
         arrAsientos.add(asientoDto);
       });

@@ -16,7 +16,7 @@
   <dependency>
     <groupId>dmsnur</groupId>
     <artifactId>SharedKernel</artifactId>
-    <version>1.8</version>
+    <version>1.0</version>
     <scope>system</scope>
 		<systemPath>${basedir}/lib/SharedKernel-latest.jar</systemPath>
   </dependency>

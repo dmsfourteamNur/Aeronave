@@ -38,8 +38,8 @@ public class UnitOfWork implements IUnitOfWork {
 
     for (Object domainEvent : events) {
       try {
-        DomainEvent event = (DomainEvent) domainEvent;
-        _mediator.notify(MakeGeneryc(event));
+        // (domainEvent.getClass(), domainEvent)
+        _mediator.notify(MakeGeneryc(domainEvent.getClass(), domainEvent));
       } catch (Exception e) {
         // TODO: handle exception
       }
@@ -47,7 +47,7 @@ public class UnitOfWork implements IUnitOfWork {
     }
   }
 
-  public <T> ConfirmedDomainEvent<T> MakeGeneryc(T o) {
+  public <T> ConfirmedDomainEvent<T> MakeGeneryc(Class<?> c, T o) {
     return new ConfirmedDomainEvent<T>(o);
   }
 }

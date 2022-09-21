@@ -34,23 +34,15 @@ public class AeronaveController {
   }
 
   @GetMapping("/")
-  public List<AeronaveDto> getAll() throws HttpException {
-    try {
-      Response<List<AeronaveDto>> lista = _mediator.send(new GetAllAeronaveQuery());
-      return lista.data;
-    } catch (Exception e) {
-      throw (HttpException) e.getCause();
-    }
+  public List<AeronaveDto> getAll() throws Exception {
+    Response<List<AeronaveDto>> lista = _mediator.send(new GetAllAeronaveQuery());
+    return lista.data;
   }
 
   @GetMapping("/{key}")
-  public Response<AeronaveDto> getByKey(@PathVariable GetAeronaveByKeyQuery request)
-    throws HttpException {
-    try {
-      return _mediator.send(request);
-    } catch (Exception e) {
-      throw (HttpException) e.getCause();
-    }
+  public AeronaveDto getByKey(@PathVariable GetAeronaveByKeyQuery request)
+      throws Exception {
+    return (AeronaveDto) _mediator.send(request).data;
   }
 
   @PostMapping("/registro")
@@ -60,32 +52,22 @@ public class AeronaveController {
 
   @PutMapping("/{key}")
   public AeronaveDto edit(
-    @RequestBody Aeronave aeronave,
-    @PathVariable EditarAeronaveCommand request
-  ) throws HttpException {
+      @RequestBody Aeronave aeronave,
+      @PathVariable EditarAeronaveCommand request) throws Exception {
     request.aeronave.matricula = aeronave.matricula;
-    try {
-      return (AeronaveDto) _mediator.send(request).data;
-    } catch (Exception e) {
-      throw (HttpException) e.getCause();
-    }
+    return (AeronaveDto) _mediator.send(request).data;
   }
 
   @PutMapping("/AddAsiento/{key}")
   public UUID addAsiento(
-    @RequestBody AsientoDto asientoDto,
-    @PathVariable AddAsientoAeronaveCommand request
-  ) throws Exception {
+      @RequestBody AsientoDto asientoDto,
+      @PathVariable AddAsientoAeronaveCommand request) throws Exception {
     request.setAsiento(asientoDto);
     return (UUID) _mediator.send(request).data;
   }
 
   @DeleteMapping("/{key}")
-  public UUID delete(@PathVariable EliminarAeronaveCommand request) throws HttpException {
-    try {
-      return (UUID) _mediator.send(request).data;
-    } catch (Exception e) {
-      throw (HttpException) e.getCause();
-    }
+  public UUID delete(@PathVariable EliminarAeronaveCommand request) throws Exception {
+    return (UUID) _mediator.send(request).data;
   }
 }

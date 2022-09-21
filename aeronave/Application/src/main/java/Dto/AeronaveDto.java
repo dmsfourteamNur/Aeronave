@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+import Model.Aeronaves.Aeronave;
+
 public class AeronaveDto {
 
   public UUID key;
@@ -13,6 +15,16 @@ public class AeronaveDto {
 
   public AeronaveDto() {
     asientos = new ArrayList<>();
+  }
+
+  public AeronaveDto(Aeronave aeronave) {
+    this.key = aeronave.key;
+    this.matricula = aeronave.matricula;
+    this.keyModelo = aeronave.keyModelo;
+    this.asientos = new ArrayList<>();
+    aeronave.asientos.iterator().forEachRemaining(obj -> {
+      this.asientos.add(new AsientoDto(obj));
+    });
   }
 
   public void setKey(UUID key) {

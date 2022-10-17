@@ -2,5 +2,5 @@
 **/package-lock.json
 # **/db
 # db/
-**/mongoDB
-# mongoDB
+# **/mongoDB
+/mongoDB

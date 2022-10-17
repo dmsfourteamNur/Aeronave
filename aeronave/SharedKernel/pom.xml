@@ -9,17 +9,14 @@
   </parent>
 
   <groupId>dmsnur</groupId>
-  <artifactId>Domain</artifactId>
+  <artifactId>SharedKernel</artifactId>
   <version>1.0</version>
 
-<dependencies>
-  <dependency>
-    <groupId>dmsnur</groupId>
-    <artifactId>SharedKernel</artifactId>
-    <version>1.0</version>
-    <!-- <scope>system</scope> -->
-		<!-- <systemPath>${basedir}/lib/SharedKernel-latest.jar</systemPath> -->
-  </dependency>
-</dependencies>
-
+  <dependencies>
+    <dependency>
+      <groupId>dmsnur</groupId>
+      <artifactId>Fourteam</artifactId>
+      <version>1.0</version>
+    </dependency>
+  </dependencies>
 </project>

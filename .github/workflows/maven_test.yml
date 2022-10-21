@@ -11,7 +11,9 @@ jobs:
           java-version: "11"
           distribution: "adopt"
       - name: Build with Maven
-        run: cd aeronave && mvn --batch-mode --update-snapshots test
+        run: cd aeronave && mvn --batch-mode --update-snapshots install
+      - name: Test with Maven
+        run: cd aeronave && mvn test
   build:
     runs-on: ubuntu-latest
     steps:

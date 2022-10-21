@@ -2,4 +2,4 @@
 . "$(dirname -- "$0")/_/husky.sh"
 
 npx lint-staged
-npm test
+mvn clean test -Dsurefire.skipAfterFailureCount=1  -f "./aeronave"

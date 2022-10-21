@@ -7,7 +7,7 @@
     "doc": "docs"
   },
   "scripts": {
-    "test": "mvn test -f ./aeronave"
+    "test": "mvn --batch-mode -Dmaven.test.failure.ignore=true test -f ./aeronave"
   },
   "repository": {
     "type": "git",

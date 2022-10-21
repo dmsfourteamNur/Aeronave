@@ -16,5 +16,4 @@ public class AeronaveChange extends DomainEvent {
     super(LocalDateTime.now());
     this.keyAeronave = keyAeronave;
   }
-
 }

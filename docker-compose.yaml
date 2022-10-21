@@ -1,4 +1,4 @@
-version: "3.7"
+version: '3.7'
 services:
   database:
     image: mongo:latest
@@ -14,10 +14,10 @@ services:
     image: rickypazd/aeronave-java
     build: ./aeronave
     restart: always
-    network_mode: "service:database"
+    network_mode: 'service:database'
   web:
     image: nginx:latest
-    network_mode: "service:database"
+    network_mode: 'service:database'
     volumes:
       - ./html:/usr/share/nginx/html
       - ./nginx/conf.d:/etc/nginx/conf.d

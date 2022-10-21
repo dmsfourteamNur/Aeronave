@@ -2,16 +2,16 @@ package UseCases.Queries.Aeronaves.GetAll;
 
 import Dto.AeronaveDto;
 import Dto.AsientoDto;
+import Fourteam.http.Exception.HttpException;
+import Fourteam.mediator.RequestHandler;
 import Model.Aeronaves.Aeronave;
 import Model.Aeronaves.Asiento;
 import Repositories.IAeronaveRepository;
-import Fourteam.http.Exception.HttpException;
-import Fourteam.mediator.RequestHandler;
 import java.util.ArrayList;
 import java.util.List;
 
 public class GetAllAeronaveHandler
-    implements RequestHandler<GetAllAeronaveQuery, List<AeronaveDto>> {
+  implements RequestHandler<GetAllAeronaveQuery, List<AeronaveDto>> {
 
   private IAeronaveRepository _aeronaveRepository;
 

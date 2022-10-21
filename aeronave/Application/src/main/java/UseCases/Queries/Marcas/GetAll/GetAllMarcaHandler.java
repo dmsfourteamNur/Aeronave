@@ -2,9 +2,9 @@ package UseCases.Queries.Marcas.GetAll;
 
 import Dto.MarcaDto;
 import Dto.ModeloDto;
+import Fourteam.mediator.RequestHandler;
 import Model.Marcas.Marca;
 import Repositories.IMarcaRepository;
-import Fourteam.mediator.RequestHandler;
 import java.util.ArrayList;
 import java.util.List;
 

@@ -2,6 +2,8 @@ import Factories.AeronaveFactory;
 import Factories.IAeronaveFactory;
 import Factories.IMarcaFactory;
 import Factories.MarcaFactory;
+import Fourteam.extensions.IServiceCollection;
+import Fourteam.mediator.IMediator;
 import UseCases.Command.Aeronaves.AddAsiento.AddAsientoAeronaveHandler;
 import UseCases.Command.Aeronaves.Crear.CrearAeronaveHandler;
 import UseCases.Command.Aeronaves.Editar.EditarAeronaveHandler;
@@ -17,8 +19,6 @@ import UseCases.Queries.Aeronaves.GetAll.GetAllAeronaveHandler;
 import UseCases.Queries.Aeronaves.GetByKey.GetAeronaveByKeyHandler;
 import UseCases.Queries.Marcas.GetAll.GetAllMarcaHandler;
 import UseCases.Queries.Marcas.GetByKey.GetMarcaByKeyHandler;
-import Fourteam.extensions.IServiceCollection;
-import Fourteam.mediator.IMediator;
 
 public class Application {
 

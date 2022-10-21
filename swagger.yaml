@@ -1,5 +1,5 @@
 servers:
-  - {url: "http://localhost/api/"}
+  - { url: 'http://localhost/api/' }
 openapi: 3.0.0
 paths:
   /marca/{key}:
@@ -7,9 +7,9 @@ paths:
       summary: /marca getByKey
       operationId: /marca_getByKey
       responses:
-        "200": {description: Response 200}
+        '200': { description: Response 200 }
       parameters:
-        - schema: {type: string}
+        - schema: { type: string }
           in: path
           name: key
           required: true
@@ -18,9 +18,9 @@ paths:
       summary: /marca delete
       operationId: /marca_delete
       responses:
-        "200": {description: Response 200}
+        '200': { description: Response 200 }
       parameters:
-        - schema: {type: string}
+        - schema: { type: string }
           in: path
           name: key
           required: true
@@ -30,12 +30,12 @@ paths:
       requestBody:
         content:
           application/json:
-            schema: {type: object}
+            schema: { type: object }
       operationId: /marca_edit
       responses:
-        "200": {description: Response 200}
+        '200': { description: Response 200 }
       parameters:
-        - schema: {type: string}
+        - schema: { type: string }
           in: path
           name: key
           required: true
@@ -45,23 +45,23 @@ paths:
       summary: /aeronave getAll
       operationId: /aeronave_getAll
       responses:
-        "200": {description: Response 200}
+        '200': { description: Response 200 }
       tags: [/aeronave]
   /marca/:
     get:
       summary: /marca getAll
       operationId: /marca_getAll
       responses:
-        "200": {description: Response 200}
+        '200': { description: Response 200 }
       tags: [/marca]
   /aeronave/{key}:
     get:
       summary: /aeronave getByKey
       operationId: /aeronave_getByKey
       responses:
-        "200": {description: Response 200}
+        '200': { description: Response 200 }
       parameters:
-        - schema: {type: string}
+        - schema: { type: string }
           in: path
           name: key
           required: true
@@ -70,9 +70,9 @@ paths:
       summary: /aeronave delete
       operationId: /aeronave_delete
       responses:
-        "200": {description: Response 200}
+        '200': { description: Response 200 }
       parameters:
-        - schema: {type: string}
+        - schema: { type: string }
           in: path
           name: key
           required: true
@@ -82,12 +82,12 @@ paths:
       requestBody:
         content:
           application/json:
-            schema: {type: object}
+            schema: { type: object }
       operationId: /aeronave_edit
       responses:
-        "200": {description: Response 200}
+        '200': { description: Response 200 }
       parameters:
-        - schema: {type: string}
+        - schema: { type: string }
           in: path
           name: key
           required: true
@@ -98,10 +98,10 @@ paths:
       requestBody:
         content:
           application/json:
-            schema: {type: object}
+            schema: { type: object }
       operationId: /aeronave_register
       responses:
-        "200": {description: Response 200}
+        '200': { description: Response 200 }
       tags: [/aeronave]
   /marca/registro:
     post:
@@ -109,12 +109,12 @@ paths:
       requestBody:
         content:
           application/json:
-            schema: {type: object}
+            schema: { type: object }
       operationId: /marca_register
       responses:
-        "200": {description: Response 200}
+        '200': { description: Response 200 }
       tags: [/marca]
-info: {description: FuourTeam API description, title: FourTeam API, version: 1.0.1}
+info: { description: FuourTeam API description, title: FourTeam API, version: 1.0.1 }
 tags:
-  - {name: /marca, description: /marca_descripcion}
-  - {name: /aeronave, description: /aeronave_descripcion}
+  - { name: /marca, description: /marca_descripcion }
+  - { name: /aeronave, description: /aeronave_descripcion }

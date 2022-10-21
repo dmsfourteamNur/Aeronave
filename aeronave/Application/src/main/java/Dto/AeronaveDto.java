@@ -1,10 +1,9 @@
 package Dto;
 
+import Model.Aeronaves.Aeronave;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
-
-import Model.Aeronaves.Aeronave;
 
 public class AeronaveDto {
 
@@ -22,9 +21,11 @@ public class AeronaveDto {
     this.matricula = aeronave.matricula;
     this.keyModelo = aeronave.keyModelo;
     this.asientos = new ArrayList<>();
-    aeronave.asientos.iterator().forEachRemaining(obj -> {
-      this.asientos.add(new AsientoDto(obj));
-    });
+    aeronave.asientos
+      .iterator()
+      .forEachRemaining(obj -> {
+        this.asientos.add(new AsientoDto(obj));
+      });
   }
 
   public void setKey(UUID key) {

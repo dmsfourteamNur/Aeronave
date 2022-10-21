@@ -1,8 +1,7 @@
 package Dto;
 
-import java.util.UUID;
-
 import Model.Aeronaves.Asiento;
+import java.util.UUID;
 
 public class AsientoDto {
 
@@ -18,6 +17,7 @@ public class AsientoDto {
     this.numero = asiento.numero;
     this.clase = asiento.clase;
   }
+
   public AsientoDto(UUID key, int numero, String clase) {
     this.key = key;
     this.numero = numero;
@@ -25,10 +25,11 @@ public class AsientoDto {
   }
 
   public UUID getKey() {
-      return key;
+    return key;
   }
+
   public void setKey(UUID key) {
-      this.key = key;
+    this.key = key;
   }
 
   public int getNumero() {

@@ -2,6 +2,9 @@ package UseCases.Command.Marcas.AddModelo;
 
 import Dto.AsientoDto;
 import Factories.IAeronaveFactory;
+import Fourteam.http.Exception.HttpException;
+import Fourteam.http.HttpStatus;
+import Fourteam.mediator.RequestHandler;
 import Model.Aeronaves.Aeronave;
 import Model.Aeronaves.Asiento;
 import Model.Marcas.Marca;
@@ -9,9 +12,6 @@ import Model.Marcas.Modelo;
 import Repositories.IAeronaveRepository;
 import Repositories.IMarcaRepository;
 import Repositories.IUnitOfWork;
-import Fourteam.http.Exception.HttpException;
-import Fourteam.http.HttpStatus;
-import Fourteam.mediator.RequestHandler;
 import java.util.UUID;
 
 public class AddModeloMarcaHandler implements RequestHandler<AddModeloMarcaCommand, UUID> {

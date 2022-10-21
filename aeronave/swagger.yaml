@@ -1,5 +1,5 @@
 servers:
-- {url: 'http://localhost:8080/api/'}
+  - { url: 'http://localhost:8080/api/' }
 openapi: 3.0.0
 paths:
   /marca/{key}:
@@ -7,45 +7,45 @@ paths:
       summary: /marca getByKey
       operationId: /marca_getByKey
       responses:
-        '200': {description: Response 200}
+        '200': { description: Response 200 }
       parameters:
-      - schema: {type: string}
-        in: path
-        name: key
-        required: true
+        - schema: { type: string }
+          in: path
+          name: key
+          required: true
       tags: [/marca]
     delete:
       summary: /marca delete
       operationId: /marca_delete
       responses:
-        '200': {description: Response 200}
+        '200': { description: Response 200 }
       parameters:
-      - schema: {type: string}
-        in: path
-        name: key
-        required: true
+        - schema: { type: string }
+          in: path
+          name: key
+          required: true
       tags: [/marca]
     put:
       summary: /marca edit
       requestBody:
         content:
           application/json:
-            schema: {type: object}
+            schema: { type: object }
       operationId: /marca_edit
       responses:
-        '200': {description: Response 200}
+        '200': { description: Response 200 }
       parameters:
-      - schema: {type: string}
-        in: path
-        name: key
-        required: true
+        - schema: { type: string }
+          in: path
+          name: key
+          required: true
       tags: [/marca]
   /aeronave/:
     get:
       summary: /aeronave getAll
       operationId: /aeronave_getAll
       responses:
-        '200': {description: Response 200}
+        '200': { description: Response 200 }
       tags: [/aeronave]
   /marca/AddModelo/{key}:
     put:
@@ -53,60 +53,60 @@ paths:
       requestBody:
         content:
           application/json:
-            schema: {type: object}
+            schema: { type: object }
       operationId: /marca_addModelo
       responses:
-        '200': {description: Response 200}
+        '200': { description: Response 200 }
       parameters:
-      - schema: {type: string}
-        in: path
-        name: key
-        required: true
+        - schema: { type: string }
+          in: path
+          name: key
+          required: true
       tags: [/marca]
   /marca/:
     get:
       summary: /marca getAll
       operationId: /marca_getAll
       responses:
-        '200': {description: Response 200}
+        '200': { description: Response 200 }
       tags: [/marca]
   /aeronave/{key}:
     get:
       summary: /aeronave getByKey
       operationId: /aeronave_getByKey
       responses:
-        '200': {description: Response 200}
+        '200': { description: Response 200 }
       parameters:
-      - schema: {type: string}
-        in: path
-        name: key
-        required: true
+        - schema: { type: string }
+          in: path
+          name: key
+          required: true
       tags: [/aeronave]
     delete:
       summary: /aeronave delete
       operationId: /aeronave_delete
       responses:
-        '200': {description: Response 200}
+        '200': { description: Response 200 }
       parameters:
-      - schema: {type: string}
-        in: path
-        name: key
-        required: true
+        - schema: { type: string }
+          in: path
+          name: key
+          required: true
       tags: [/aeronave]
     put:
       summary: /aeronave edit
       requestBody:
         content:
           application/json:
-            schema: {type: object}
+            schema: { type: object }
       operationId: /aeronave_edit
       responses:
-        '200': {description: Response 200}
+        '200': { description: Response 200 }
       parameters:
-      - schema: {type: string}
-        in: path
-        name: key
-        required: true
+        - schema: { type: string }
+          in: path
+          name: key
+          required: true
       tags: [/aeronave]
   /aeronave/AddAsiento/{key}:
     put:
@@ -114,15 +114,15 @@ paths:
       requestBody:
         content:
           application/json:
-            schema: {type: object}
+            schema: { type: object }
       operationId: /aeronave_addAsiento
       responses:
-        '200': {description: Response 200}
+        '200': { description: Response 200 }
       parameters:
-      - schema: {type: string}
-        in: path
-        name: key
-        required: true
+        - schema: { type: string }
+          in: path
+          name: key
+          required: true
       tags: [/aeronave]
   /aeronave/registro:
     post:
@@ -130,10 +130,10 @@ paths:
       requestBody:
         content:
           application/json:
-            schema: {type: object}
+            schema: { type: object }
       operationId: /aeronave_register
       responses:
-        '200': {description: Response 200}
+        '200': { description: Response 200 }
       tags: [/aeronave]
   /marca/registro:
     post:
@@ -141,12 +141,12 @@ paths:
       requestBody:
         content:
           application/json:
-            schema: {type: object}
+            schema: { type: object }
       operationId: /marca_register
       responses:
-        '200': {description: Response 200}
+        '200': { description: Response 200 }
       tags: [/marca]
-info: {description: FuourTeam API description, title: FourTeam API, version: 1.0.1}
+info: { description: FuourTeam API description, title: FourTeam API, version: 1.0.1 }
 tags:
-- {name: /marca, description: /marca_descripcion}
-- {name: /aeronave, description: /aeronave_descripcion}
+  - { name: /marca, description: /marca_descripcion }
+  - { name: /aeronave, description: /aeronave_descripcion }

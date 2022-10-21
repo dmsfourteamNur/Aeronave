@@ -1,11 +1,11 @@
 package UseCases.Queries.Marcas.GetByKey;
 
 import Dto.MarcaDto;
-import Model.Marcas.Marca;
-import Repositories.IMarcaRepository;
 import Fourteam.http.Exception.HttpException;
 import Fourteam.http.HttpStatus;
 import Fourteam.mediator.RequestHandler;
+import Model.Marcas.Marca;
+import Repositories.IMarcaRepository;
 
 public class GetMarcaByKeyHandler implements RequestHandler<GetMarcaByKeyQuery, MarcaDto> {
 

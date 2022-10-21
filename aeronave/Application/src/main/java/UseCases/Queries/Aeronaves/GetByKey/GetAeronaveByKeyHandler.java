@@ -2,11 +2,11 @@ package UseCases.Queries.Aeronaves.GetByKey;
 
 import Dto.AeronaveDto;
 import Dto.AsientoDto;
-import Model.Aeronaves.Aeronave;
-import Repositories.IAeronaveRepository;
 import Fourteam.http.Exception.HttpException;
 import Fourteam.http.HttpStatus;
 import Fourteam.mediator.RequestHandler;
+import Model.Aeronaves.Aeronave;
+import Repositories.IAeronaveRepository;
 
 public class GetAeronaveByKeyHandler implements RequestHandler<GetAeronaveByKeyQuery, AeronaveDto> {
 

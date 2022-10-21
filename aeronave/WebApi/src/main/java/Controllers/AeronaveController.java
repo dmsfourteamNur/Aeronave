@@ -2,13 +2,6 @@ package Controllers;
 
 import Dto.AeronaveDto;
 import Dto.AsientoDto;
-import Model.Aeronaves.Aeronave;
-import UseCases.Command.Aeronaves.AddAsiento.AddAsientoAeronaveCommand;
-import UseCases.Command.Aeronaves.Crear.CrearAeronaveCommand;
-import UseCases.Command.Aeronaves.Editar.EditarAeronaveCommand;
-import UseCases.Command.Aeronaves.Eliminar.EliminarAeronaveCommand;
-import UseCases.Queries.Aeronaves.GetAll.GetAllAeronaveQuery;
-import UseCases.Queries.Aeronaves.GetByKey.GetAeronaveByKeyQuery;
 import Fourteam.http.Exception.HttpException;
 import Fourteam.http.annotation.DeleteMapping;
 import Fourteam.http.annotation.GetMapping;
@@ -20,6 +13,13 @@ import Fourteam.http.annotation.RequestMapping;
 import Fourteam.http.annotation.RestController;
 import Fourteam.mediator.Mediator;
 import Fourteam.mediator.Response;
+import Model.Aeronaves.Aeronave;
+import UseCases.Command.Aeronaves.AddAsiento.AddAsientoAeronaveCommand;
+import UseCases.Command.Aeronaves.Crear.CrearAeronaveCommand;
+import UseCases.Command.Aeronaves.Editar.EditarAeronaveCommand;
+import UseCases.Command.Aeronaves.Eliminar.EliminarAeronaveCommand;
+import UseCases.Queries.Aeronaves.GetAll.GetAllAeronaveQuery;
+import UseCases.Queries.Aeronaves.GetByKey.GetAeronaveByKeyQuery;
 import java.util.List;
 import java.util.UUID;
 
@@ -40,8 +40,7 @@ public class AeronaveController {
   }
 
   @GetMapping("/{key}")
-  public AeronaveDto getByKey(@PathVariable GetAeronaveByKeyQuery request)
-      throws Exception {
+  public AeronaveDto getByKey(@PathVariable GetAeronaveByKeyQuery request) throws Exception {
     return (AeronaveDto) _mediator.send(request).data;
   }
 
@@ -52,16 +51,18 @@ public class AeronaveController {
 
   @PutMapping("/{key}")
   public AeronaveDto edit(
-      @RequestBody Aeronave aeronave,
-      @PathVariable EditarAeronaveCommand request) throws Exception {
+    @RequestBody Aeronave aeronave,
+    @PathVariable EditarAeronaveCommand request
+  ) throws Exception {
     request.aeronave.matricula = aeronave.matricula;
     return (AeronaveDto) _mediator.send(request).data;
   }
 
   @PutMapping("/AddAsiento/{key}")
   public UUID addAsiento(
-      @RequestBody AsientoDto asientoDto,
-      @PathVariable AddAsientoAeronaveCommand request) throws Exception {
+    @RequestBody AsientoDto asientoDto,
+    @PathVariable AddAsientoAeronaveCommand request
+  ) throws Exception {
     request.setAsiento(asientoDto);
     return (UUID) _mediator.send(request).data;
   }

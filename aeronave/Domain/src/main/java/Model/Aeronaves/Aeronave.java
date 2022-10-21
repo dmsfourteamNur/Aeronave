@@ -16,8 +16,7 @@ public class Aeronave extends AggregateRoot<UUID> {
   public String keyModelo;
   public List<Asiento> asientos;
 
-  public Aeronave() {
-  }
+  public Aeronave() {}
 
   public Aeronave(String matricula, String keyModelo) {
     key = UUID.randomUUID();
@@ -41,12 +40,12 @@ public class Aeronave extends AggregateRoot<UUID> {
 
   public void agregarAsiento(Asiento asiento) throws Exception {
     asientos
-        .parallelStream()
-        .filter(p -> p.numero == asiento.numero)
-        .findFirst()
-        .ifPresent(p -> {
-          throw new RuntimeException("El numero asiento ya existe");
-        });
+      .parallelStream()
+      .filter(p -> p.numero == asiento.numero)
+      .findFirst()
+      .ifPresent(p -> {
+        throw new RuntimeException("El numero asiento ya existe");
+      });
     asientos.add(asiento);
     eventChange();
   }

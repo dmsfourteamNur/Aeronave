@@ -1,10 +1,10 @@
 import Context.IWriteDbContext;
+import Fourteam.config.Config;
+import Fourteam.extensions.IServiceCollection;
 import Repositories.*;
 import Repository.*;
 import UseCases.Consumers.AeronaveCreadoConsumer;
 import UseCases.Consumers.TripulacionCreadoConsumer;
-import Fourteam.config.Config;
-import Fourteam.extensions.IServiceCollection;
 
 public class Infraestructure {
 

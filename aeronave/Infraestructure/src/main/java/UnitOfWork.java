@@ -1,10 +1,10 @@
 import Context.IWriteDbContext;
-import Repositories.IUnitOfWork;
-import core.ConfirmedDomainEvent;
-import core.DomainEvent;
 import Fourteam.db.Exception.DataBaseException;
 import Fourteam.http.Exception.HttpException;
 import Fourteam.mediator.Mediator;
+import Repositories.IUnitOfWork;
+import core.ConfirmedDomainEvent;
+import core.DomainEvent;
 import java.util.List;
 
 public class UnitOfWork implements IUnitOfWork {
@@ -24,10 +24,7 @@ public class UnitOfWork implements IUnitOfWork {
       try {
         DomainEvent event = (DomainEvent) domainEvent;
         _mediator.notify(event);
-      } catch (Exception e) {
-
-      }
-
+      } catch (Exception e) {}
     }
     try {
       _context.Commit();
@@ -43,7 +40,6 @@ public class UnitOfWork implements IUnitOfWork {
       } catch (Exception e) {
         // TODO: handle exception
       }
-
     }
   }
 

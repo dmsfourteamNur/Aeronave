@@ -1,3 +1,14 @@
-# Ignore artifacts:
+ # Ignore artifacts:
 build
 coverage
+*.md
+*.jpg
+*.png
+*.xml
+**/.git
+**/.svn
+**/.hg
+**/node_modules
+**/target
+**/lib
+.vscode

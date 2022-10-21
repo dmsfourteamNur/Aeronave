@@ -1,12 +1,12 @@
 package UseCases.DomainEventHandler.Aeronave;
 
 import Event.AeronaveCreado;
-import core.ConfirmedDomainEvent;
-import core.DomainEvent;
-import core.IntegrationEvent;
 import Fourteam.massTransit.IPublishEndpoint;
 import Fourteam.mediator.Notification;
 import Fourteam.mediator.NotificationHandler;
+import core.ConfirmedDomainEvent;
+import core.DomainEvent;
+import core.IntegrationEvent;
 
 public class PublishIntegrationEventWhenAeronaveCreadoHandler
   implements NotificationHandler<ConfirmedDomainEvent<AeronaveCreado>> {

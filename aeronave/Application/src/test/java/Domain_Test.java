@@ -7,4 +7,8 @@ public class Domain_Test {
   public void addDomain_accept() {
     Assert.assertNotNull(new Domain());
   }
+  @Test
+  public void denied() {
+    Assert.assertNotNull(null);
+  }
 }

@@ -9,6 +9,6 @@ public class Domain_Test {
   }
   @Test
   public void denied() {
-    Assert.assertNotNull(1);
+    Assert.assertNotNull(null);
   }
 }

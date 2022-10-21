@@ -33,4 +33,4 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: cd venta && mvn jacoco:prepare-agent test install jacoco:report && mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=rickypazd_dmsnur-aeronave
+        run: cd aeronave && mvn jacoco:prepare-agent test install jacoco:report && mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=dmsfourteamNur_Aeronave

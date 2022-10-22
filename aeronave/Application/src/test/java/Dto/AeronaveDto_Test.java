@@ -11,6 +11,7 @@ public class AeronaveDto_Test {
   @Test
   public void CheckPropertiesValid() {
     UUID key = UUID.randomUUID();
+    UUID key_modelo = UUID.randomUUID();
     String matricula = "A12345";
     List<AsientoDto> asientos = getAsientos();
     AeronaveDto aeronave = new AeronaveDto();
@@ -22,7 +23,10 @@ public class AeronaveDto_Test {
     aeronave.setKey(key);
     aeronave.setMatricula(matricula);
     aeronave.setAsientos(asientos);
+    aeronave.setKeyModelo(key_modelo.toString());
+
     Assert.assertEquals(key, aeronave.getKey());
+    Assert.assertEquals(key_modelo.toString(), aeronave.getKeyModelo());
     Assert.assertEquals(matricula, aeronave.getMatricula());
     Assert.assertEquals(asientos, aeronave.getAsientos());
   }

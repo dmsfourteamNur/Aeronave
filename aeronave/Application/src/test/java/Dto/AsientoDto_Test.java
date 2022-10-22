@@ -18,12 +18,12 @@ public class AsientoDto_Test {
     Assert.assertEquals(0, asiento.numero);
     Assert.assertEquals(null, asiento.clase);
 
-    asiento.key = key;
+    asiento.setKey(key);
     // asiento.setKeyAeronave(keyAeronave);
     asiento.setNumero(numero);
     asiento.setClase(clase);
 
-    Assert.assertEquals(key, asiento.key);
+    Assert.assertEquals(key, asiento.getKey());
     // Assert.assertEquals(keyAeronave, asiento.getKeyAeronave());
     Assert.assertEquals(numero, asiento.getNumero());
     Assert.assertEquals(clase, asiento.getClase());

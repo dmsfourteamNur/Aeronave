@@ -17,9 +17,10 @@
                 "exec": [
                   "pm.test(\"Status code is 200\", ()=>{",
                   "    pm.response.to.have.status(200);",
-                  "    var data = pm.response.json().data.key;",
+                  "    var data = pm.response.json();",
                   "    pm.environment.set(\"key_aeronave\",data);",
-                  "})"
+                  "})",
+                  ""
                 ],
                 "type": "text/javascript"
               }
@@ -30,7 +31,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\n    \"matricula\":\"ABC_TEST\"\n}",
+              "raw": "{\n    \"matricula\":\"test1\",\n    \"keyModelo\":\"{{key_modelo}}\"\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -65,7 +66,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\n    \"matricula\":\"ABC_TEST2\"\n}",
+              "raw": "{\n    \"matricula\":\"ABC_TEST2as\",\n    \"keyModelo\":\"{{key_modelo}}\"\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -76,6 +77,41 @@
               "raw": "{{url}}/aeronave/{{key_aeronave}}",
               "host": ["{{url}}"],
               "path": ["aeronave", "{{key_aeronave}}"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "AddAsiento",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"numero\":1,\n    \"clase\":\"primera\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url}}/aeronave/AddAsiento/{{key_aeronave}}",
+              "host": ["{{url}}"],
+              "path": ["aeronave", "AddAsiento", "{{key_aeronave}}"]
             }
           },
           "response": []
@@ -175,7 +211,7 @@
                 "exec": [
                   "pm.test(\"Status code is 200\", ()=>{",
                   "    pm.response.to.have.status(200);",
-                  "    var data = pm.response.json().data.key;",
+                  "    var data = pm.response.json();",
                   "    pm.environment.set(\"key_marca\",data);",
                   "})"
                 ],
@@ -188,7 +224,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\n    \"nombre\":\"MARCA_TEST\"\n}",
+              "raw": "{\n    \"nombre\":\"Boeing\"\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -234,6 +270,41 @@
               "raw": "{{url}}/marca/{{key_marca}}",
               "host": ["{{url}}"],
               "path": ["marca", "{{key_marca}}"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "AddModelo",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"nombre\":\"747\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url}}/marca/AddModelo/{{key_marca}}",
+              "host": ["{{url}}"],
+              "path": ["marca", "AddModelo", "{{key_marca}}"]
             }
           },
           "response": []

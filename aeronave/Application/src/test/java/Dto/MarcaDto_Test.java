@@ -21,4 +21,20 @@ public class MarcaDto_Test {
     Assert.assertEquals(key, marca.key);
     Assert.assertEquals(nombre, marca.nombre);
   }
+
+  @Test
+  public void CheckGetAndSet() {
+    UUID key = UUID.randomUUID();
+    String nombre = "Ejecutiva";
+    MarcaDto marca = new MarcaDto();
+    Assert.assertEquals(null, marca.key);
+    Assert.assertEquals(null, marca.nombre);
+
+    marca.setKey(key);
+    marca.setNombre(nombre);
+
+    Assert.assertNull(marca.getModelos());
+    Assert.assertEquals(key, marca.getKey());
+    Assert.assertEquals(nombre, marca.getNombre());
+  }
 }

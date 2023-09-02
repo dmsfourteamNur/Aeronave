@@ -1,29 +1,31 @@
 import { describe } from 'mocha';
 import { expect } from 'chai';
-import MarcaService from '../../src/services/MarcaService.js';
+import AeronaveService from '../../src/services/AeronaveService.js';
 import { PactV3, MatchersV3, Interaction, Verifier } from '@pact-foundation/pact';
 // var pact = require("@pact-foundation/pact-core");
 const { like } = MatchersV3;
 
-const ResponseExpet = '52cf456a-ebc2-4339-8f5e-d9d6a8dbdc1f';
+const ResponseExpet = 'b6a5e05b-e208-4b43-b02f-783563d2ff18';
 const RequestExpet = {
-  nombre: 'Boegin',
+  matricula: 'ABCD',
+  keyModelo: 'de4b96bb-2409-4fcd-9e42-beb5f79e20a7',
 };
-describe('El API de marcas', () => {
+
+describe('El API de aeronaves', () => {
   const provider = new PactV3({
     consumer: 'react-client',
-    provider: 'marca-service',
+    provider: 'aeronave-service',
   });
 
-  describe('crear marca', () => {
-    it('retorna un id de marca ya creada', () => {
+  describe('crear aeronave', () => {
+    it('retorna un id de aeronave ya creada', () => {
       //Arrange
       provider
-        .given('crear marca')
-        .uponReceiving('un nombre para crear una marca')
+        .given('crear aeronave')
+        .uponReceiving('una matricula y un keyModelo para crear una aeronave')
         .withRequest({
           method: 'POST',
-          path: '/api/marca/registro',
+          path: '/api/aeronave/registro',
           headers: {
             'Content-Type': 'application/json',
           },
@@ -35,8 +37,8 @@ describe('El API de marcas', () => {
         });
       return provider.executeTest(async (mockServer) => {
         // Act
-        const transaccionService = new MarcaService(mockServer.url);
-        return transaccionService.registro(RequestExpet).then((response) => {
+        const service = new AeronaveService(mockServer.url);
+        return service.registro(RequestExpet).then((response) => {
           expect(response).to.be.not.null;
           expect(response).to.be.a.string;
           expect(response).equal(ResponseExpet);

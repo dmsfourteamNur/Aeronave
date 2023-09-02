@@ -4,44 +4,6 @@
   },
   "interactions": [
     {
-      "description": "una matricula y un keyModelo para crear una aeronave",
-      "providerStates": [
-        {
-          "name": "crear aeronave"
-        }
-      ],
-      "request": {
-        "body": {
-          "keyModelo": "de4b96bb-2409-4fcd-9e42-beb5f79e20a7",
-          "matricula": "ABCD"
-        },
-        "headers": {
-          "Content-Type": "application/json"
-        },
-        "method": "POST",
-        "path": "/api/aeronave/registro"
-      },
-      "response": {
-        "body": "b6a5e05b-e208-4b43-b02f-783563d2ff18",
-        "headers": {
-          "Content-Type": "application/json"
-        },
-        "matchingRules": {
-          "body": {
-            "$": {
-              "combine": "AND",
-              "matchers": [
-                {
-                  "match": "type"
-                }
-              ]
-            }
-          }
-        },
-        "status": 200
-      }
-    },
-    {
       "description": "un nombre para crear una marca",
       "providerStates": [
         {
@@ -92,6 +54,6 @@
     }
   },
   "provider": {
-    "name": "aeronave-service"
+    "name": "marca-service"
   }
 }

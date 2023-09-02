@@ -1,7 +1,7 @@
 import { Verifier } from '@pact-foundation/pact';
 import { before, describe, it } from 'mocha';
 import path from 'path';
-const pactFile = path.resolve(`pacts/react-client-marca-service.json`);
+const pactFile = path.resolve(`pacts/react-client-aeronave-service.json`);
 let port;
 let opts;
 describe('Pact Verification', () => {

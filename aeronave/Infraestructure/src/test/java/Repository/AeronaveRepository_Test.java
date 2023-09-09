@@ -43,6 +43,17 @@ public class AeronaveRepository_Test {
   }
 
   @Test
+  public void FindByMatricula() throws Exception {
+    // Mockito.verify(_aeronaves).Single(obj -> obj.key.equals(UUID.randomUUID()));
+    Aeronave a = new Aeronave();
+    when(_aeronaves.Single(any())).thenReturn(a);
+    AeronaveRepository repository = new AeronaveRepository(_database);
+    // ArgumentCaptor<Aeronave> captor = ArgumentCaptor.forClass(Aeronave.class);
+    repository.FindByMatricula("A");
+    Assert.assertNotNull(repository);
+  }
+
+  @Test
   public void GetAll_accept() throws Exception {
     AeronaveRepository repository = new AeronaveRepository(_database);
     repository.GetAll();

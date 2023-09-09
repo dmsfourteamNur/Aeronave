@@ -38,7 +38,7 @@ public class GetAeronaveByKeyHandler_Test {
     verify(aeronaveRepository).FindByKey(a.key);
   }
 
-  @Test
+  @Test(expected = HttpException.class)
   public void HandleFail() throws Exception {
     Aeronave a = new Aeronave("ASD", UUID.randomUUID().toString());
     when(aeronaveRepository.FindByKey(any())).thenReturn(null);
@@ -52,11 +52,11 @@ public class GetAeronaveByKeyHandler_Test {
     // }
 
     // assert throws exception
-    Assert.assertThrows(
-      HttpException.class,
-      () -> {
-        handler.handle(query);
-      }
-    );
+    handler.handle(query);
+    // Assert.assertThrows(
+    // HttpException.class,
+    // () -> {
+    // }
+    // );
   }
 }

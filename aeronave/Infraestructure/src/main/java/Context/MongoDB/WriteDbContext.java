@@ -32,6 +32,10 @@ public class WriteDbContext extends IWriteDbContext {
     super(WriteDbContext.class);
   }
 
+  public void setDB(MongoDatabase db) {
+    this.db = db;
+  }
+
   @Override
   public void onModelCreating(List<DbSet> sets) {
     DB_NAME = Config.getProperty("mongo.dbname");

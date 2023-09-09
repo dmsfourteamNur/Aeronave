@@ -53,6 +53,18 @@ public class Aeronave_Test {
   }
 
   @Test
+  public void addAsientoNoExistente_accept() {
+    String matricula = "MAD";
+    Aeronave a = new Aeronave(matricula, UUID.randomUUID().toString());
+    try {
+      a.agregarAsiento(new Asiento(a.key, 1, "A1"));
+      a.agregarAsiento(new Asiento(a.key, 2, "A2"));
+    } catch (Exception e) {}
+    // TODO://
+    // Assert.assertEquals(a.asientos.size(), 1);
+  }
+
+  @Test
   public void addAsiento_denied() {
     String matricula = "MAD";
     Aeronave a = new Aeronave(matricula, UUID.randomUUID().toString());

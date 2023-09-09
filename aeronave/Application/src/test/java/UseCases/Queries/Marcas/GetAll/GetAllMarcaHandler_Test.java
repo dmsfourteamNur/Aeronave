@@ -5,6 +5,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import Model.Marcas.Marca;
+import Model.Marcas.Modelo;
 import Repositories.IMarcaRepository;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +20,7 @@ public class GetAllMarcaHandler_Test {
   @Test
   public void HandleCorrectly() throws Exception {
     Marca a = new Marca("Nombre marca");
+    a.agregarModelo(new Modelo(a.getKey(), "Modelo 1"));
     List<Marca> list = new ArrayList<Marca>();
     list.add(a);
     when(marcaRepository.GetAll()).thenReturn(list);

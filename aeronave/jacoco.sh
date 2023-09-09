@@ -9,7 +9,7 @@ while IFS= read -r line ; do
     if [ -d "$line" ]; then
         if [ -d "$line/target/site" ]; then
             cp -r ./$line/target/site/jacoco/ ./target/jacoco/$line/
-            items+="<a href='${line}/index.html'>${line}</a><br/>"
+            items+="<div><a href='${line}/index.html'>${line}</a>  <iframe src='${line}' width='100%' height='500px'></iframe></div>"
             echo "$finded"
             echo "Copied $line"
         else
@@ -30,8 +30,8 @@ cat > ./target/jacoco/index.html << EOF
 </head>
 <body>
     <h1>Fourteam</h1>
-    <h3>Jacoco Coverage</h1>
     ${items}
+
 </body>
 </html>
 EOF

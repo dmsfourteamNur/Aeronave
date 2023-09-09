@@ -6,388 +6,496 @@
   },
   "item": [
     {
-      "name": "aeronave",
-      "item": [
+      "name": "marca_registro",
+      "event": [
         {
-          "name": "registro",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "exec": [
-                  "pm.test(\"Status code is 200\", ()=>{",
-                  "    pm.response.to.have.status(200);",
-                  "    var data = pm.response.json();",
-                  "    pm.environment.set(\"key_aeronave\",data);",
-                  "})",
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n    \"matricula\":\"test1\",\n    \"keyModelo\":\"{{key_modelo}}\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "{{url}}/aeronave/registro",
-              "host": ["{{url}}"],
-              "path": ["aeronave", "registro"]
-            }
-          },
-          "response": []
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", () => {",
+              "    pm.response.to.have.status(200);",
+              "    var data = pm.response.json();",
+              "    // Define una expresión regular para un UUID",
+              "    let uuidRegex = /^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-5][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$/;",
+              "    // Verifica si el cuerpo de la respuesta coincide con la expresión regular del UUID",
+              "    if (uuidRegex.test(data)) {",
+              "        pm.test(\"La respuesta contiene un UUID válido\", function () {",
+              "            pm.expect(true).to.be.true;",
+              "        });",
+              "    } else {",
+              "        pm.test(\"La respuesta no contiene un UUID válido\", function () {",
+              "            pm.expect(false).to.be.true;",
+              "        });",
+              "    }",
+              "    pm.environment.set(\"key_marca\", data);",
+              "})"
+            ],
+            "type": "text/javascript"
+          }
         },
         {
-          "name": "edit",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "exec": [
-                  "pm.test(\"Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "PUT",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n    \"matricula\":\"ABC_TEST2as\",\n    \"keyModelo\":\"{{key_modelo}}\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "{{url}}/aeronave/{{key_aeronave}}",
-              "host": ["{{url}}"],
-              "path": ["aeronave", "{{key_aeronave}}"]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "AddAsiento",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "exec": [
-                  "pm.test(\"Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "PUT",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n    \"numero\":1,\n    \"clase\":\"primera\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "{{url}}/aeronave/AddAsiento/{{key_aeronave}}",
-              "host": ["{{url}}"],
-              "path": ["aeronave", "AddAsiento", "{{key_aeronave}}"]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "getByKey",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "exec": [
-                  "pm.test(\"Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "{{url}}/aeronave/{{key_aeronave}}",
-              "host": ["{{url}}"],
-              "path": ["aeronave", "{{key_aeronave}}"]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "delete",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "exec": [
-                  "pm.test(\"Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "DELETE",
-            "header": [],
-            "url": {
-              "raw": "{{url}}/aeronave/{{key_aeronave}}",
-              "host": ["{{url}}"],
-              "path": ["aeronave", "{{key_aeronave}}"]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "getAll",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "exec": [
-                  "pm.test(\"Status code is 200\",()=>{",
-                  "    pm.response.to.have.status(200)",
-                  "})",
-                  "pm.test(\"Response not empty\",()=>{",
-                  "    pm.expect(pm.response.text()).not.empty;",
-                  "})"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "{{url}}/aeronave/",
-              "host": ["{{url}}"],
-              "path": ["aeronave", ""]
-            }
-          },
-          "response": []
+          "listen": "prerequest",
+          "script": {
+            "exec": [""],
+            "type": "text/javascript"
+          }
         }
-      ]
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"nombre\":\"{{marca}}\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{url}}/marca/registro",
+          "host": ["{{url}}"],
+          "path": ["marca", "registro"]
+        }
+      },
+      "response": []
     },
     {
-      "name": "marca",
-      "item": [
+      "name": "marca_edit",
+      "event": [
         {
-          "name": "registro",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "exec": [
-                  "pm.test(\"Status code is 200\", ()=>{",
-                  "    pm.response.to.have.status(200);",
-                  "    var data = pm.response.json();",
-                  "    pm.environment.set(\"key_marca\",data);",
-                  "})"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n    \"nombre\":\"Boeing\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "{{url}}/marca/registro",
-              "host": ["{{url}}"],
-              "path": ["marca", "registro"]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "edit",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "exec": [
-                  "pm.test(\"Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "PUT",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n    \"nombre\":\"ABC_TEST2\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "{{url}}/marca/{{key_marca}}",
-              "host": ["{{url}}"],
-              "path": ["marca", "{{key_marca}}"]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "AddModelo",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "exec": [
-                  "pm.test(\"Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "PUT",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n    \"nombre\":\"747\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "{{url}}/marca/AddModelo/{{key_marca}}",
-              "host": ["{{url}}"],
-              "path": ["marca", "AddModelo", "{{key_marca}}"]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "getByKey",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "exec": [
-                  "pm.test(\"Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "{{url}}/marca/{{key_marca}}",
-              "host": ["{{url}}"],
-              "path": ["marca", "{{key_marca}}"]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "delete",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "exec": [
-                  "pm.test(\"Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "DELETE",
-            "header": [],
-            "url": {
-              "raw": "{{url}}/marca/{{key_marca}}",
-              "host": ["{{url}}"],
-              "path": ["marca", "{{key_marca}}"]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "getAll",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "exec": [
-                  "pm.test(\"Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "{{url}}/marca/",
-              "host": ["{{url}}"],
-              "path": ["marca", ""]
-            }
-          },
-          "response": []
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
         }
-      ]
+      ],
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"nombre\":\"ABC_TEST2\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{url}}/marca/{{key_marca}}",
+          "host": ["{{url}}"],
+          "path": ["marca", "{{key_marca}}"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "marca_AddModelo",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "    var data = pm.response.json();",
+              "",
+              "    let uuidRegex = /^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-5][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$/;",
+              "    // Verifica si el cuerpo de la respuesta coincide con la expresión regular del UUID",
+              "    if (uuidRegex.test(data)) {",
+              "        pm.test(\"La respuesta contiene un UUID válido\", function () {",
+              "            pm.expect(true).to.be.true;",
+              "        });",
+              "    } else {",
+              "        pm.test(\"La respuesta no contiene un UUID válido\", function () {",
+              "            pm.expect(false).to.be.true;",
+              "        });",
+              "    }",
+              "",
+              "    pm.environment.set(\"key_modelo\", data);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"nombre\":\"{{modelo}}\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{url}}/marca/AddModelo/{{key_marca}}",
+          "host": ["{{url}}"],
+          "path": ["marca", "AddModelo", "{{key_marca}}"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "aeronave_registro",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", ()=>{",
+              "    pm.response.to.have.status(200);",
+              "    var data = pm.response.json();",
+              "",
+              "     let uuidRegex = /^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-5][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$/;",
+              "    // Verifica si el cuerpo de la respuesta coincide con la expresión regular del UUID",
+              "    if (uuidRegex.test(data)) {",
+              "        pm.test(\"La respuesta contiene un UUID válido\", function () {",
+              "            pm.expect(true).to.be.true;",
+              "        });",
+              "    } else {",
+              "        pm.test(\"La respuesta no contiene un UUID válido\", function () {",
+              "            pm.expect(false).to.be.true;",
+              "        });",
+              "    }",
+              "",
+              "    ",
+              "    pm.environment.set(\"key_aeronave\",data);",
+              "})",
+              ""
+            ],
+            "type": "text/javascript"
+          }
+        },
+        {
+          "listen": "prerequest",
+          "script": {
+            "exec": [""],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"matricula\":\"{{matricula}}\",\n    \"keyModelo\":\"{{key_modelo}}\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{url}}/aeronave/registro",
+          "host": ["{{url}}"],
+          "path": ["aeronave", "registro"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "aeronave_registro_existe_matricula",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 400\", ()=>{",
+              "    pm.response.to.have.status(400);",
+              "})",
+              ""
+            ],
+            "type": "text/javascript"
+          }
+        },
+        {
+          "listen": "prerequest",
+          "script": {
+            "exec": [""],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"matricula\":\"{{matricula}}\",\n    \"keyModelo\":\"{{key_modelo}}\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{url}}/aeronave/registro",
+          "host": ["{{url}}"],
+          "path": ["aeronave", "registro"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "aeronave_edit",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"matricula\": \"{{matricula}}--TEST\",\n    \"keyModelo\":\"{{key_modelo}}\",\n    \"asientos\":[]\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{url}}/aeronave/{{key_aeronave}}",
+          "host": ["{{url}}"],
+          "path": ["aeronave", "{{key_aeronave}}"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "aeronave_AddAsiento",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"numero\":1,\n    \"clase\":\"primera\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{url}}/aeronave/AddAsiento/{{key_aeronave}}",
+          "host": ["{{url}}"],
+          "path": ["aeronave", "AddAsiento", "{{key_aeronave}}"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "aeronave_getByKey",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{url}}/aeronave/{{key_aeronave}}",
+          "host": ["{{url}}"],
+          "path": ["aeronave", "{{key_aeronave}}"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "aeronave_delete",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{url}}/aeronave/{{key_aeronave}}",
+          "host": ["{{url}}"],
+          "path": ["aeronave", "{{key_aeronave}}"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "aeronave_getAll",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\",()=>{",
+              "    pm.response.to.have.status(200)",
+              "})",
+              "pm.test(\"Response not empty\",()=>{",
+              "    pm.expect(pm.response.text()).not.empty;",
+              "})"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{url}}/aeronave/",
+          "host": ["{{url}}"],
+          "path": ["aeronave", ""]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "marca_getByKey",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{url}}/marca/{{key_marca}}",
+          "host": ["{{url}}"],
+          "path": ["marca", "{{key_marca}}"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "marca_delete",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{url}}/marca/{{key_marca}}",
+          "host": ["{{url}}"],
+          "path": ["marca", "{{key_marca}}"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "maca_getAll",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{url}}/marca/",
+          "host": ["{{url}}"],
+          "path": ["marca", ""]
+        }
+      },
+      "response": []
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          "pm.environment.set(\"marca\",\"Boeing\");",
+          "pm.environment.set(\"modelo\",\"747\");",
+          "pm.environment.set(\"matricula\",\"ABCDEF-1\")"
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "exec": [""]
+      }
     }
   ]
 }

@@ -17,8 +17,8 @@
   <modules>
     <!-- <module>Fourteam</module> -->
     <!-- <module>SharedKernel</module> -->
-    <module>Domain</module>
     <module>Application</module>
+    <module>Domain</module>
     <module>Infraestructure</module>
     <module>WebApi</module>
 

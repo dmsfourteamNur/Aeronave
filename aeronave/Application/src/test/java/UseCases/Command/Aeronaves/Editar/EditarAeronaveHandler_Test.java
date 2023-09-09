@@ -11,6 +11,7 @@ import Fourteam.http.Exception.HttpException;
 import Model.Aeronaves.Aeronave;
 import Repositories.IAeronaveRepository;
 import Repositories.IUnitOfWork;
+import java.util.ArrayList;
 import java.util.UUID;
 import org.junit.Assert;
 import org.junit.Before;
@@ -30,6 +31,7 @@ public class EditarAeronaveHandler_Test {
   public void HandleCorrectly() throws Exception {
     String matricula = "ASD";
     Aeronave a = new Aeronave(matricula, "");
+    a.asientos = new ArrayList<>();
     when(aeronaveRepository.FindByKey(any())).thenReturn(a);
 
     EditarAeronaveHandler handler = new EditarAeronaveHandler(
@@ -44,7 +46,7 @@ public class EditarAeronaveHandler_Test {
 
     EditarAeronaveCommand command = new EditarAeronaveCommand(aeronaveDto.key);
     command.aeronave.matricula = matricula;
-    Aeronave resp = handler.handle(command);
+    AeronaveDto resp = handler.handle(command);
     Assert.assertEquals(matricula, resp.matricula);
   }
 
@@ -64,7 +66,7 @@ public class EditarAeronaveHandler_Test {
 
     EditarAeronaveCommand command = new EditarAeronaveCommand(aeronaveDto.key);
     try {
-      Aeronave resp = handler.handle(command);
+      AeronaveDto resp = handler.handle(command);
     } catch (HttpException e) {
       Assert.assertEquals(400, e.getCode());
     }

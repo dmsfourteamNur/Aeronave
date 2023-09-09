@@ -18,7 +18,7 @@ describe('El API de aeronaves', () => {
   });
 
   describe('crear aeronave', () => {
-    it('retorna un id de aeronave ya creada', () => {
+    it('retorna un uuid de la aeronave ya creada', () => {
       //Arrange
       provider
         .given('crear aeronave')

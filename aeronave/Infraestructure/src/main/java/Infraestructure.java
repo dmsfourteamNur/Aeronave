@@ -18,17 +18,16 @@ public class Infraestructure {
     Application.AddApplication();
     // AddRabbitMq();
   }
+  // private static void AddRabbitMq() {
+  //   IServiceCollection.AddMassTransit(config -> {
+  //     config.AddConsumer(TripulacionCreadoConsumer.class);
+  //     config.AddConsumer(AeronaveCreadoConsumer.class);
 
-  private static void AddRabbitMq() {
-    IServiceCollection.AddMassTransit(config -> {
-      config.AddConsumer(TripulacionCreadoConsumer.class);
-      config.AddConsumer(AeronaveCreadoConsumer.class);
-
-      config.UsingRabbitMq((context, cfg) -> {
-        cfg.Host = Config.getProperty("rabit.host");
-        cfg.User = Config.getProperty("rabit.user");
-        cfg.Password = Config.getProperty("rabit.pass");
-      });
-    });
-  }
+  //     config.UsingRabbitMq((context, cfg) -> {
+  //       cfg.Host = Config.getProperty("rabit.host");
+  //       cfg.User = Config.getProperty("rabit.user");
+  //       cfg.Password = Config.getProperty("rabit.pass");
+  //     });
+  //   });
+  // }
 }

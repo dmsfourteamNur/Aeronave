@@ -7,6 +7,7 @@ import static org.mockito.Mockito.when;
 import Context.IWriteDbContext;
 import Fourteam.db.DbSet;
 import Fourteam.db.IDbSet.BooleanFunction;
+import Model.Aeronaves.Aeronave;
 import Model.Marcas.Marca;
 import Model.Marcas.Modelo;
 import java.util.UUID;
@@ -29,6 +30,15 @@ public class MarcaRepository_Test {
   public void constructor_accept() {
     MarcaRepository repository = new MarcaRepository(_database);
     Assert.assertNotNull(repository);
+  }
+
+  @Test
+  public void probando_lambda_by_key() {
+    Marca a = new Marca("Nombre");
+    // when(_marcas.Single(any())).then
+    MarcaRepository repository = new MarcaRepository(_database);
+    BooleanFunction<Marca> equalkey = repository.equalKey(a.key);
+    equalkey.run(a);
   }
 
   @Test

@@ -17,4 +17,21 @@ export default class MarcaService {
       }),
     }).then((resp) => resp.json());
   }
+  edit({ key, matricula }) {
+    return fetch(this.endpoint + '/api/aeronave/' + key, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        matricula: matricula,
+      }),
+    }).then((resp) => resp.json());
+  }
+
+  delete({ key }) {
+    return fetch(this.endpoint + '/api/aeronave/' + key, {
+      method: 'DELETE',
+    }).then((resp) => resp.json());
+  }
 }

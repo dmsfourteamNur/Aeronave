@@ -28,10 +28,7 @@ public class UnitOfWork implements IUnitOfWork {
     }
     try {
       _context.Commit();
-    } catch (DataBaseException e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
-    }
+    } catch (DataBaseException e) {}
 
     for (Object domainEvent : events) {
       try {

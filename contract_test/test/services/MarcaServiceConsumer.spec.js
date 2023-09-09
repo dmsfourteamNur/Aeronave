@@ -9,15 +9,10 @@ const ResponseExpet = '52cf456a-ebc2-4339-8f5e-d9d6a8dbdc1f';
 const RequestExpet = {
   nombre: 'Boegin',
 };
-describe('El API de marcas', () => {
-  const provider = new PactV3({
-    consumer: 'react-client',
-    provider: 'marca-service',
-  });
 
+const CrearMarca = (provider) => {
   describe('crear marca', () => {
     it('retorna un id de marca ya creada', () => {
-      //Arrange
       provider
         .given('crear marca')
         .uponReceiving('un nombre para crear una marca')
@@ -44,4 +39,12 @@ describe('El API de marcas', () => {
       });
     });
   });
+};
+
+describe('El API de marcas', () => {
+  const provider = new PactV3({
+    consumer: 'react-client',
+    provider: 'marca-service',
+  });
+  CrearMarca(provider);
 });

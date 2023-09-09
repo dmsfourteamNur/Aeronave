@@ -47,6 +47,13 @@ paths:
       responses:
         '200': { description: Response 200 }
       tags: [/aeronave]
+  /marca/:
+    get:
+      summary: /marca getAll
+      operationId: /marca_getAll
+      responses:
+        '200': { description: Response 200 }
+      tags: [/marca]
   /marca/AddModelo/{key}:
     put:
       summary: /marca addModelo
@@ -62,13 +69,6 @@ paths:
           in: path
           name: key
           required: true
-      tags: [/marca]
-  /marca/:
-    get:
-      summary: /marca getAll
-      operationId: /marca_getAll
-      responses:
-        '200': { description: Response 200 }
       tags: [/marca]
   /aeronave/{key}:
     get:

@@ -1,5 +1,8 @@
+import static org.mockito.Mockito.when;
+
 import org.junit.Assert;
 import org.junit.Test;
+import org.mockito.Mockito;
 
 public class Infraestructure_Test {
 
@@ -8,10 +11,12 @@ public class Infraestructure_Test {
     Infraestructure infraestructure = new Infraestructure();
     Assert.assertNotNull(infraestructure);
   }
-  // @Test
-  // public void AddInfraestructure_accept() {
-  //   Infraestructure infraestructure = new Infraestructure();
-  //   infraestructure.AddInfraestructure();
-  //   Assert.assertTrue(true);
-  // }
+
+  @Test
+  public void addInfraestructure() {
+    // PowerMockito.mockStatic(SharedKernel.class);
+    // Mockito.mockStatic(Application.class);
+
+    // Infraestructure.AddInfraestructure();
+  }
 }

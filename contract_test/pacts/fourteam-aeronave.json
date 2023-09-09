@@ -1,0 +1,238 @@
+{
+  "consumer": {
+    "name": "fourteam"
+  },
+  "interactions": [
+    {
+      "description": "Los datos de un modelo y la key de una marca",
+      "providerStates": [
+        {
+          "name": "agregar marca"
+        }
+      ],
+      "request": {
+        "body": {
+          "nombre": "MODELO"
+        },
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "method": "PUT",
+        "path": "/api/marca/AddModelo/b5be9df1-94d0-4591-97e6-8efb16b1f8dc"
+      },
+      "response": {
+        "body": "b5be9df1-94d0-4591-97e6-8efb16b1f8dc",
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "matchingRules": {
+          "body": {
+            "$": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            }
+          }
+        },
+        "status": 200
+      }
+    },
+    {
+      "description": "Los datos de una aeronave",
+      "providerStates": [
+        {
+          "name": "crear aeronave"
+        }
+      ],
+      "request": {
+        "body": {
+          "keyModelo": "a9be9df1-94d0-4591-97e6-8efb16b1f77f",
+          "matricula": "ABCDEF-1"
+        },
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "method": "POST",
+        "path": "/api/aeronave/registro"
+      },
+      "response": {
+        "body": "3e581995-b22a-464e-8ee1-128ee01e843c",
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "matchingRules": {
+          "body": {
+            "$": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            }
+          }
+        },
+        "status": 200
+      }
+    },
+    {
+      "description": "Los datos de una marca",
+      "providerStates": [
+        {
+          "name": "crear marca"
+        }
+      ],
+      "request": {
+        "body": {
+          "nombre": "AVV"
+        },
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "method": "POST",
+        "path": "/api/marca/registro"
+      },
+      "response": {
+        "body": "b5be9df1-94d0-4591-97e6-8efb16b1f8dc",
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "matchingRules": {
+          "body": {
+            "$": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            }
+          }
+        },
+        "status": 200
+      }
+    },
+    {
+      "description": "La key de una aeronave",
+      "providerStates": [
+        {
+          "name": "delete aeronave"
+        }
+      ],
+      "request": {
+        "method": "DELETE",
+        "path": "/api/aeronave/3e581995-b22a-464e-8ee1-128ee01e843c"
+      },
+      "response": {
+        "body": "3e581995-b22a-464e-8ee1-128ee01e843c",
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "matchingRules": {
+          "body": {
+            "$": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            }
+          }
+        },
+        "status": 200
+      }
+    },
+    {
+      "description": "Los datos de una aeronave, y su key por la url",
+      "providerStates": [
+        {
+          "name": "editar aeronave"
+        }
+      ],
+      "request": {
+        "body": {
+          "matricula": "ABCDEF-1"
+        },
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "method": "PUT",
+        "path": "/api/aeronave/3e581995-b22a-464e-8ee1-128ee01e843c"
+      },
+      "response": {
+        "body": {
+          "asientos": [],
+          "key": "3e581995-b22a-464e-8ee1-128ee01e843c",
+          "keyModelo": "a9be9df1-94d0-4591-97e6-8efb16b1f77f",
+          "matricula": "ABCDEF-1"
+        },
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "matchingRules": {
+          "body": {
+            "$": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            }
+          }
+        },
+        "status": 200
+      }
+    },
+    {
+      "description": "Los datos de una marca, y su key por la url",
+      "providerStates": [
+        {
+          "name": "editar marca"
+        }
+      ],
+      "request": {
+        "method": "DELETE",
+        "path": "/api/marca/b5be9df1-94d0-4591-97e6-8efb16b1f8dc"
+      },
+      "response": {
+        "body": "b5be9df1-94d0-4591-97e6-8efb16b1f8dc",
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "matchingRules": {
+          "body": {
+            "$": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            }
+          }
+        },
+        "status": 200
+      }
+    }
+  ],
+  "metadata": {
+    "pact-js": {
+      "version": "10.4.1"
+    },
+    "pactRust": {
+      "ffi": "0.4.0",
+      "models": "1.0.4"
+    },
+    "pactSpecification": {
+      "version": "3.0.0"
+    }
+  },
+  "provider": {
+    "name": "aeronave"
+  }
+}

@@ -7,4 +7,9 @@ public class Application_Test {
   public void constructor() {
     Assert.assertNotNull(new Application());
   }
+
+  @Test
+  public void add_application() {
+    Application.AddApplication();
+  }
 }

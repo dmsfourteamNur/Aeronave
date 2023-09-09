@@ -7,6 +7,7 @@ import static org.mockito.Mockito.when;
 import Dto.AeronaveDto;
 import Event.AeronaveCreado;
 import Factories.IAeronaveFactory;
+import Fourteam.http.Exception.HttpException;
 import Model.Aeronaves.Aeronave;
 import Model.Marcas.Marca;
 import Repositories.IAeronaveRepository;
@@ -16,8 +17,10 @@ import java.util.UUID;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.Mockito;
 
+// @RunWith(PowerMockRunner.class)
 public class CrearAeronaveHandler_Test {
 
   IAeronaveFactory aeronaveFactory = Mockito.mock(IAeronaveFactory.class);
@@ -58,5 +61,37 @@ public class CrearAeronaveHandler_Test {
     Assert.assertNotNull(resp);
     // Assert.assertEquals(AeronaveCreado.class,
     // resp.domainEvents.get(0).getClass());
+  }
+
+  @Test(expected = HttpException.class)
+  public void handle_error_existe_matricula() throws Exception {
+    when(aeronaveRepository.FindByMatricula(any())).thenReturn(new Aeronave("1A", "1abc"));
+
+    CrearAeronaveHandler handler = new CrearAeronaveHandler(
+      aeronaveFactory,
+      aeronaveRepository,
+      marcaRepository,
+      _unitOfWork
+    );
+
+    AeronaveDto aeronaveDto = new AeronaveDto();
+    aeronaveDto.matricula = "1A";
+    aeronaveDto.keyModelo = "1abc";
+    UUID resp = handler.handle(new CrearAeronaveCommand(aeronaveDto));
+  }
+
+  @Test(expected = HttpException.class)
+  public void handle_error_no_existe_marca() throws Exception {
+    CrearAeronaveHandler handler = new CrearAeronaveHandler(
+      aeronaveFactory,
+      aeronaveRepository,
+      marcaRepository,
+      _unitOfWork
+    );
+
+    AeronaveDto aeronaveDto = new AeronaveDto();
+    aeronaveDto.matricula = "1A";
+    aeronaveDto.keyModelo = "1abc";
+    UUID resp = handler.handle(new CrearAeronaveCommand(aeronaveDto));
   }
 }
